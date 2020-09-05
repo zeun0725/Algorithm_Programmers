@@ -10,5 +10,4 @@ def solution(phone_book):
             if book.startswith(pre):
                 return False
         pre = phone_book.pop(0)
-
     return True
