@@ -9,14 +9,14 @@ def solution(number, k):
         return number[:-k]
 
     answer = []
-    for num in number[:]:
+    for num in number:
         while answer and answer[-1] < num and k > 0:
             # answer 안 마지막 값이 num 보다 작을때 pop
             answer.pop()
             k -= 1
         answer.append(num)  # 일단 push
 
-    if k > 0:  # for문을 다 돌았지만 제거할 수가 아직 더 남았을 때
-        answer = answer[:-k]  # k 전까지 수로
-
+    # for문을 다 돌았지만 제거할 수가 아직 더 남았을 때
+    #ex) number = 9876, k = 2
+    answer = answer[:-k] if k > 0 else answer
     return ''.join(answer)
