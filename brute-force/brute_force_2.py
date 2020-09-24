@@ -24,7 +24,7 @@ def solution(numbers):
     # 짝수 거르는 작업
     prime_num = {num for num in prime_num if (num % 2 == 1 and num > 1) or num == 2}
     for num in prime_num:
-        if num == 2 or num == 3 or num == 5:
+        if num in [2, 3, 5]:
             answer += 1
             continue
         answer += get_prime_num(num)
