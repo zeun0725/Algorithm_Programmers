@@ -1,6 +1,7 @@
 # 네트워크
 # https://programmers.co.kr/learn/courses/30/lessons/43162?language=python3
 
+'''
 def solution(n, computers):
     answer = 0
     network = []
@@ -19,4 +20,22 @@ def solution(n, computers):
                 answer += 1
                 break
     return answer
+'''
 
+
+def dfs(start, visited, computers):
+    if 0 not in visited:
+        return 1
+    for index, computer in enumerate(computers[start]):
+        if visited[index] == 0 and computer == 1:
+            visited[index] = 1
+            dfs(index, visited, computers)
+    return 1
+
+def solution(n, computers):
+    answer = 0
+    visited = [0] * n
+    for idx, com in enumerate(computers):
+        if visited[idx] == 0:
+            answer += dfs(idx, visited, computers)
+    return answer
