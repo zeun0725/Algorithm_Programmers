@@ -3,11 +3,13 @@
 
 from collections import defaultdict
 
+
 def get_total_plays(genres, plays):
     genre_dic = defaultdict(int)
     for genre, play in zip(genres, plays):
         genre_dic[genre] += play
-    return sorted(genre_dic.items(), key=lambda x: x[1],reverse=True)
+    return sorted(genre_dic.items(), key=lambda x: x[1], reverse=True)
+
 
 def solution(genres, plays):
     answer = []
