@@ -5,6 +5,7 @@ def get_two_string(text):
     return [text[idx] + text[idx + 1] for idx, char in enumerate(text[:-1]) if
             'a' <= text[idx] <= 'z' and 'a' <= text[idx + 1] <= 'z']
 
+
 def get_jaccard_similarity(str1, str2):
     similar = 0
     for char in str1:
