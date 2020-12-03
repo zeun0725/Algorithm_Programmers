@@ -20,3 +20,21 @@ def solution(n, costs):
                 answer += value[2]
                 break
     return answer
+
+
+# def solution(n, costs):
+#     answer = []
+#     if n==1:
+#         return 0
+#     while len(costs) >= n:
+#         costs = sorted(costs, key = lambda x: x[2], reverse=True)
+#         while 1:
+#             connect = set()
+#             for cost in costs[1:]:
+#                 connect.add(cost[0])
+#                 connect.add(cost[1])
+#             if len(connect) == n:
+#                 costs.pop(0)
+#                 break
+#             costs = costs[1:] + [costs[0]]
+#     return sum(ans[2] for ans in costs)

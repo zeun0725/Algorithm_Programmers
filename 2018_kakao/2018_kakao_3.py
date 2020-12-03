@@ -11,16 +11,13 @@ class Queue:
         self.queue = defaultdict(float)
 
     def insert(self, item):
-        try:
-            if not self.is_hit(item):
-                if len(self.queue) == self.size:
-                    self.delete()
-                self.queue[item] = time.time()
-                self.time += 5
-            else:
-                self.time += 1
-        except: #self.size = 0 일때
+        if not self.is_hit(item):
+            if len(self.queue) == self.size:
+                self.delete()
+            self.queue[item] = time.time()
             self.time += 5
+        else:
+            self.time += 1
 
     def is_hit(self, item):
         if item in self.queue.keys():
@@ -36,6 +33,8 @@ class Queue:
 
 
 def solution(cacheSize, cities):
+    if cacheSize == 0:
+        return len(cities) * 5
     cache_queue = Queue(cacheSize)
     for city in cities:
         cache_queue.insert(city.lower())
