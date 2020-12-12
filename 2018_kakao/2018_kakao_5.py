@@ -7,17 +7,10 @@ def get_ing_time(time1, time2):
     return (end_time[0] - start_time[0]) * 60 + (end_time[1] - start_time[1])
 
 def hash_to_lower(musics):
-    if '#' not in musics:
-        return musics
-    re_music = ''
-    for idx, music in enumerate(musics):
-        if musics[idx] == '#':
-            continue
-        if idx < len(musics)-1 and musics[idx+1] == '#':
-            re_music += music.lower()
-        else:
-            re_music += music
-    return re_music
+    while musics.find('#') != -1:
+        h_idx = musics.find('#')
+        musics = musics[:h_idx-1] + musics[h_idx-1].lower() + musics[h_idx+1:]
+    return musics
 
 def solution(m, musicinfos):
     answer = []
@@ -44,35 +37,31 @@ def solution(m, musicinfos):
 
 
 # test case 12번 통과 못한 소스코드
-#
+# https://programmers.co.kr/questions/6647
+# 악보 1439 이하라 1439 까지 늘리고 앞에서부터 같은 음 있으면 통과 없으면 다시 처음 인덱스로..
 # def get_ing_time(time1, time2):
-#     start_time = time1.split(':')
-#     end_time = time2.split(':')
-#     return (int(end_time[0])-int(start_time[0]))*60+(int(end_time[1])-int(start_time[1]))
+#     start_time = list(map(int, time1.split(':')))
+#     end_time = list(map(int, time2.split(':')))
+#     return (end_time[0] - start_time[0]) * 60 + (end_time[1] - start_time[1])
 #
-# def hash_to_lower(music):
-#     music2 = ''
-#     for i, m in enumerate(music):
-#         if music[i] == '#':
-#             continue
-#         if i < len(music)-1 and music[i+1]=='#':
-#             music2 += m.lower()
-#         else:
-#             music2 += m
-#     return music2
+# def hash_to_lower(musics):
+#     while musics.find('#') != -1:
+#         h_idx = musics.find('#')
+#         musics = musics[:h_idx-1] + musics[h_idx-1].lower() + musics[h_idx+1:]
+#     return musics
 #
 # def solution(m, musicinfos):
 #     answer = []
 #     m = hash_to_lower(m)
 #     len_m = len(m)
-#     for idx, musicinfo in enumerate(musicinfos):
+#     for musicinfo in musicinfos:
 #         info = musicinfo.split(',')
-#         info_test = hash_to_lower(info[3])
-#         len_music = len(info_test)
+#         lyrics = hash_to_lower(info[3])
+#         len_lyric = len(lyrics)
 #         idx = 0
 #         m_idx = 0
-#         music = info_test*(1439//len_music)
-#         music += info_test[:1439-len(music)]
+#         music = lyrics*(1439//len_lyric)
+#         music += lyrics[:1439-len(music)]
 #         ing_time = get_ing_time(info[0], info[1])
 #         ing_time_2 = ing_time
 #         while ing_time > 0:
@@ -84,11 +73,11 @@ def solution(m, musicinfos):
 #                 m_idx = 0
 #                 idx += 1
 #                 continue
-#             if (m_idx % len_m) == 0:
-#                 answer.append([ing_time_2, idx, info[2]])
-#                 break
 #
+#             if (m_idx % len_m) == 0:
+#                 answer.append([ing_time_2, info[2]])
+#                 break
 #     if not answer:
 #         return "(None)"
-#     answer.sort(key=lambda x: (-x[0],x[1]))
-#     return answer[0][2]
+#     answer.sort(key=lambda x: -x[0])
+#     return answer[0][1]
