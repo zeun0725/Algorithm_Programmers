@@ -22,14 +22,10 @@ def solution(m, musicinfos):
         len_lyric = len(lyrics)
         ing_time = get_ing_time(info[0], info[1])
         ing_time_2 = ing_time
-        while ing_time > 0:
-            ing_time -= 1
-            music = lyrics * (len_m // len_lyric)
-            music += lyrics[:len_m - len(music)]
-            if m in music:
-                answer.append([ing_time_2, info[2]])
-                break
-            lyrics = lyrics[1:] + lyrics[0]
+        music = lyrics*(ing_time//len_lyric)
+        music += lyrics[:ing_time-len(music)]
+        if m in music:
+            answer.append([ing_time_2, info[2]])
     if not answer:
         return "(None)"
     answer.sort(key=lambda x: -x[0])
