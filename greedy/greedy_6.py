@@ -13,3 +13,4 @@ def solution(routes):
         answer += 1
         end = route[1]
     return answer
+
