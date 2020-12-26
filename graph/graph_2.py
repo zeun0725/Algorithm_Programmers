@@ -1,3 +1,6 @@
+# 순위
+# https://programmers.co.kr/learn/courses/30/lessons/49191
+
 """
 방향그래프로 dfs 해서 모두 방문되면 경기 결과를 알 수 있음
 진 방향 + 이긴 방향 해서 모두 연결 되면 알 수 있는 것
