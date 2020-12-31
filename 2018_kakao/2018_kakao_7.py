@@ -2,8 +2,8 @@
 # https://programmers.co.kr/learn/courses/30/lessons/17687
 
 def get_number(n, value): # 진법 출력
-    r_set = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: 'A', 11: 'B', 12: 'C',
-             13: 'D', 14: 'E', 15: 'F'}
+    r_set = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8',
+             9: '9', 10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
     val = ''
     q = n
     while q >= n:
@@ -14,7 +14,6 @@ def get_number(n, value): # 진법 출력
         val += r_set[q]
     return val[::-1]
 
-
 def get_answer(p, t, m, value):
     answer = ''
     for idx in range(p-1, t * m, m):
@@ -22,7 +21,6 @@ def get_answer(p, t, m, value):
             break
         answer += value[idx]
     return answer
-
 
 def solution(n, t, m, p):
     # 진법 n, 미리 구할 숫자의 갯수 t, 게임에 참가하는 인원 m, 튜브의 순서 p

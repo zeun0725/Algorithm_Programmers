@@ -7,7 +7,6 @@
 """
 from collections import defaultdict
 
-
 def set_dic_value(results):
     win_dic = defaultdict(list)
     lose_dic = defaultdict(list)
@@ -15,7 +14,6 @@ def set_dic_value(results):
         win_dic[result[0] - 1] += [result[1] - 1]
         lose_dic[result[1] - 1] += [result[0] - 1]
     return win_dic, lose_dic
-
 
 def dfs(value, rl, visited):
     stack = []
@@ -27,7 +25,6 @@ def dfs(value, rl, visited):
         if next_val in rl.keys():
             stack += [val for val in rl[next_val] if visited[val].__eq__(1)]
     return visited
-
 
 def solution(n, results):
     win_dic, lose_dic = set_dic_value(results)
