@@ -11,7 +11,7 @@ def solution(s):
     #     if 48 <= ord(_s) <= 57:
     #         continue
     #     return False
-    # if len(s) in [4,6]:
+    # if len(s) in [4, 6]:
     #     return True
     # return False
-    
+
