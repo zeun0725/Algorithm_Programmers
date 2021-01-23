@@ -11,7 +11,6 @@ def get_time_section(s_time, e_time, log_list):
 def get_datetime_format(logs):
     e_time = datetime.strptime(logs[0], "%Y-%m-%d %H:%M:%S.%f")
     s_time = e_time - timedelta(milliseconds=float(logs[1]) * 1000 - 1)
-
     return [s_time, e_time]
 
 def get_log_data(logs):
