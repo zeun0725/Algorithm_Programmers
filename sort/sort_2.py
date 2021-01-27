@@ -16,3 +16,19 @@ def solution(numbers):
     answer = ''
     answer += ''.join([x for x, y in nums])
     return answer
+
+import operator
+def leng(x):
+    while len(x)<4:
+        x+=x
+    return int(x[:4])
+
+def solution(numbers):
+    if set(numbers)=={0}:
+        return "0"
+    nums=list(map(str,numbers))
+    nums=list(map(leng, nums))
+    tmp = list(zip(numbers, nums))
+    sortmp=sorted(tmp, key=operator.itemgetter(1),reverse=True)
+    strs=[str(s[0]) for s in sortmp]
+    return ''.join(strs)

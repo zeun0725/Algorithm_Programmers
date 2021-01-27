@@ -11,3 +11,12 @@ def solution(phone_book):
                 return False
         pre = phone_book.pop(0)
     return True
+
+
+def solution(phone_book):
+    phone_book.sort(key=lambda x:len(x))
+    for idx, book in enumerate(phone_book):
+        for other in phone_book[idx + 1:]:
+            if other.startswith(book):
+                return False
+    return True
