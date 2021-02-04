@@ -19,3 +19,16 @@ def solution(numbers, target):
             cases = cases[2**idx:]
         idx += 1
     return Counter(cases[-num_of_cases:])[target]
+
+#=========================================
+
+
+def get_value(numbers, value, target):
+    if not numbers:
+        if value.__eq__(target):
+            return 1
+        return 0
+    return get_value(numbers[1:], value + numbers[0], target) + get_value(numbers[1:], value - numbers[0], target)
+
+def solution(numbers, target):
+    return get_value(numbers[1:], numbers[0], target) + get_value(numbers[1:], -numbers[0], target)

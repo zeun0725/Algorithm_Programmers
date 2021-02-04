@@ -14,38 +14,8 @@ def solution(clothes):
                       Counter(category for cloth, category in clothes).values()))-1
 
 
-# testcase 1번 시간초과 나온 답
-'''
-import itertools
-from collections import defaultdict
-from functools import reduce 
+#==============================
+from collections import Counter
+from functools import reduce
 def solution(clothes):
-    answer = len(clothes)
-    dic_clo=defaultdict(int)
-    for cloth, category in clothes:
-        dic_clo[category]+=1
-    if len(dic_clo)==1:
-        return answer
-    for i in range(2,len(dic_clo)+1):
-        p = itertools.combinations(dic_clo.values(),i)
-        for i in p:
-            answer+=reduce(lambda x,y:x*y,i)   
-    return answer
-'''
-
-# 그 이후로 푼 답
-'''
-import itertools
-from collections import defaultdict
-from functools import reduce 
-
-def solution(clothes):
-    answer = 1
-    dic_clo=defaultdict(int)
-    for cloth, category in clothes:
-        dic_clo[category]+=1
-    for i in dic_clo.values():
-        answer*=(i+1)
-    
-    return answer-1
-'''
+    return reduce(lambda x, y: x * y, map(lambda x: x + 1, Counter([clothe[1] for clothe in clothes]).values())) - 1
