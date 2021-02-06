@@ -12,3 +12,18 @@ def solution(n, lost, reserve):
         elif i+1 in num_lost:
                 num_lost.remove(i+1)
     return n-len(num_lost)
+
+
+#==========
+def solution(n, lost, reserve):
+    lost_list = sorted(list(set(lost).difference(set(reserve))))
+    reserve_list = sorted(list(set(reserve).difference(set(lost))))
+    for l in lost_list:
+        if l-1 in reserve_list:
+            reserve_list.remove(l-1)
+            continue
+        elif l+1 in reserve_list:
+            reserve_list.remove(l+1)
+            continue
+        n -= 1
+    return n
