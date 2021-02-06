@@ -29,3 +29,31 @@ def solution(numbers):
             continue
         answer += get_prime_num(num)
     return answer
+
+
+
+#==============
+
+
+from itertools import permutations
+import math
+
+def get_prime_num(num, idx):
+    sqrt_num = int(math.sqrt(num))
+    while sqrt_num >= idx:
+        if num % idx == 0:
+            return 0
+        idx += 1
+    return 0 if num == 1 else 1
+
+def solution(numbers):
+    nums = list(numbers)
+    answer = 1 if '2' in nums else 0
+    prmt_nums = set()
+    for idx in range(1, len(nums)+1):
+        prmt_nums.update(set(map(int, [''.join(num) for num in permutations(nums,idx)])))
+    for prmt_num in prmt_nums:
+        if prmt_num & 1 == 0:
+            continue
+        answer += get_prime_num(prmt_num, 3)
+    return answer
