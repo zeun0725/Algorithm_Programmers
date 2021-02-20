@@ -26,3 +26,38 @@ def solution(bridge_length, weight, truck_weights):
             push_index += 1
 
     return time
+
+
+from collections import deque
+
+def solution(bridge_length, weight, truck_weights):
+    time = 0
+    truck = deque(truck_weights)
+    bridge = deque([])
+    _weight = 0
+    while truck:
+        time += 1
+        if bridge and time - bridge[0][1] == bridge_length:
+            _weight -= bridge[0][0]
+            bridge.popleft()
+        if _weight + truck[0] <= weight:
+            _weight += truck[0]
+            bridge.append([truck.popleft(), time])
+
+    return time+bridge_length
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
