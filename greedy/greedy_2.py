@@ -20,3 +20,38 @@ def solution(number, k):
     #ex) number = 9876, k = 2
     answer = answer[:-k] if k > 0 else answer
     return ''.join(answer)
+
+
+
+def solution(number, k):
+    answer = ''
+    rm_idx = []
+
+    while k>0:
+        flag = False
+        for idx, num in enumerate(number[:-1]):
+            if num < number[idx+1]:
+                number = number[:idx] + number[idx+1:]
+                k -= 1
+                flag = True
+                break
+        if not flag:
+            stand = number.index(min(number))
+            number = number[:stand] + number[stand+1:]
+
+    return number
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
