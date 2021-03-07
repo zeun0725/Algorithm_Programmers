@@ -1,5 +1,5 @@
-# 각 손님 단품메뉴 두개이상 주문 , 최소 2명이상ㅇ로부터 주문ㄴ된 메뉴를 코스로 만듦
-
+# 메뉴 리뉴얼
+# https://programmers.co.kr/learn/courses/30/lessons/72411
 from collections import Counter
 from itertools import combinations
 
