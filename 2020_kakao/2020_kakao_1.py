@@ -30,6 +30,10 @@ def solution(s):
         count -= 1
     return answer
 
+def check_init_cnt(init_cnt, s):
+    if init_cnt > 1:
+        return str(init_cnt) + s
+    return s
 
 def get_zip_num(s, num):
     s_list = [s[i:i + num] for i in range(0, len(s), num)]
@@ -39,15 +43,10 @@ def get_zip_num(s, num):
         if s_list[idx] == s_list[idx + 1]:
             init_cnt += 1
             continue
-        if init_cnt > 1:
-            new_s += str(init_cnt)
-        new_s += s_list[idx]
+        new_s += check_init_cnt(init_cnt, s_list[idx])
         init_cnt = 1
-    if init_cnt > 1:
-        new_s += str(init_cnt)
-    new_s += s_list[idx + 1]
+    new_s += check_init_cnt(init_cnt, s_list[idx+1])
     return new_s
-
 
 def solution(s):
     answer = len(s)
