@@ -43,3 +43,45 @@ def solution(p):
             else:
                 temp += '('
         return temp
+
+    
+# 2번째 풀이
+
+from collections import deque 
+
+def get_balc_str(w):
+    for _w in range(2,len(w) + 1,2):
+        if w[:_w].count('(') == w[:_w].count(')'):
+            return w[:_w], w[_w:]
+
+def is_right_str(u):
+    stack = deque([])
+    for _u in u:
+        if _u == '(':
+            stack.append(_u)
+            continue
+        if stack:
+            stack.popleft()
+        else:
+            return False
+    return True
+
+def set_right_u(u):
+    new_u = [')' if _u =='(' else '(' for _u in u[1:-1]]
+    return ''.join(new_u)
+    
+
+def solution(p):
+    if not p:
+        return ''
+    answer = ''
+    if is_right_str(p):
+        return p
+    u, v = get_balc_str(p)
+    if is_right_str(u):
+        answer += u + solution(v)
+    else:
+        u = set_right_u(u)
+        answer += '(' + solution(v) + ')' + u
+
+    return answer
