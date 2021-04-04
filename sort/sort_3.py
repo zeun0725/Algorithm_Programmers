@@ -16,3 +16,20 @@ def solution(citations):
         h_index-=1
 
     return h_index
+
+
+def get_idx(citations, h_idx):
+    for idx, citation in enumerate(citations):
+            if citation >= h_idx:
+                break
+    return idx
+
+def solution(citations):
+    citations.sort()
+    h_idx, idx = 0, 0
+    length = len(citations)
+    while citations[idx] >= h_idx and length - idx >= h_idx:
+        h_idx +=1
+        idx = get_idx(citations, h_idx)
+
+    return h_idx - 1
