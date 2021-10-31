@@ -25,4 +25,20 @@ def solution(orders, course):
                 answer.append(od)
     return sorted(answer)
 
+from collections import defaultdict, Counter
+from itertools import combinations
+
+
+def solution(orders, course):
+    answer = []
+    for _course in course:
+        order_list = []
+        for order in orders:
+            order_list += list(map(''.join, combinations(sorted(list(order)), _course)))
+        cnt_order = Counter(order_list).most_common()
+        answer += [_cnt[0] for _cnt in cnt_order if _cnt[1] > 1 and _cnt[1] == cnt_order[0][1]]
+    answer.sort()
+
+    return answer
+
 print(solution(["XYZ", "XWY", "WXA"],[2,3,4]))
